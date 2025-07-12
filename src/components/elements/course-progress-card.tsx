@@ -32,7 +32,6 @@ export default function CourseProgressCard() {
     const lastViewedVideo = data?.data?.last_watched_sub_chapter
     const remainingTime = lastViewedVideo ? secondsToMinutes((lastViewedVideo.duration ?? 0) - (lastViewedVideo.progress?.watched_duration ?? 0)).durationText : '00:00'
 
-    console.log(remainingTime)
 
     if(pathname.includes('video')) return <></> 
     
