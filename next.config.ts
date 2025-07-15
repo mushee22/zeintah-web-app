@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       
       {
         protocol: 'https',
-        hostname: 'horuslearn.s3.amazonaws.com'
+        hostname: 'zeintah.s3.amazonaws.com'
       }
     ],
   }
