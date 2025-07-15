@@ -52,7 +52,7 @@ export const Menu = ({ title, path, asPath, icon: Icon }:
     const isActive = pathname === "/" && path == "/" ? true : pathname.includes(asPath) ? true : false;
 
     return (
-        <Link href={path} key={title} className={cn(nunito.className, 'cursor-pointer flex text-[10px]  md:text-base text-primary flex-col md:flex-row md:py-3 md:px-4 md:justify-start gap-x-2 justify-center items-center md:hover:bg-gradient-to-l md:hover:from-foreground/5 md:to-foreground/10')}>
+        <Link href={path} key={title} className={cn(nunito.className, 'cursor-pointer flex text-[10px]  md:text-base text-primary flex-col  md:py-3 md:px-4  gap-x-2 justify-center items-center md:hover:bg-gradient-to-l md:hover:from-foreground/5 md:to-foreground/10')}>
             <Icon isActive={isActive} />
             <span className={cn(isActive ? "bg-gradient-to-r from-accent-primary to-accent-secondary text-transparent bg-clip-text" : 'text-muted', "", '')}>{title}</span>
         </Link>
