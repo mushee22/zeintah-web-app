@@ -5,6 +5,7 @@ import MobileNavBar from '@/components/layout/mobile-nav-bar';
 import SideBar from '@/components/layout/side-bar';
 import AuthContextProvider from '@/context/auth-context';
 import { getSession } from '@/lib/session';
+import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
 
@@ -13,7 +14,7 @@ export default async function layout({ children }: PropsWithChildren) {
 
     const { isAuthenticated } = await getSession();
 
-    // if (!isAuthenticated) redirect('/sign-in');
+    if (!isAuthenticated) redirect('/sign-in');
 
     return (
         <>
