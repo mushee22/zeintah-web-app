@@ -51,16 +51,16 @@ const Player: React.FC<Props> = (props) => {
     }, [props.watchedDuration, state.fileReady, props.videoId, isVideoEnded]);
 
     useEffect(() => {
-        // return () => {
-        //     if (!unmount.current) return
-        //     if (state.progress?.playedSeconds && state.progress?.playedSeconds > 0) {
-        //         onUpdateVideoProgress({
-        //             videoId: props.videoId,
-        //             progress: state.progress?.playedSeconds,
-        //             isCompleted: props?.isCompleted ?? false
-        //         })
-        //     }
-        // }
+        return () => {
+            if (!unmount.current) return
+            if (state.progress?.playedSeconds && state.progress?.playedSeconds > 0) {
+                onUpdateVideoProgress({
+                    videoId: props.videoId,
+                    progress: state.progress?.playedSeconds,
+                    isCompleted: props?.isCompleted ?? false
+                })
+            }
+        }
     }, [state.progress?.playedSeconds,])
 
     const handlePreview = () => {
