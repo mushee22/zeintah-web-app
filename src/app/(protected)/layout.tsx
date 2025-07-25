@@ -1,5 +1,4 @@
 
-import CourseProgressCard from '@/components/elements/course-progress-card';
 import ProfileUpdateSheet from '@/components/elements/profile-update-sheet';
 import MobileNavBar from '@/components/layout/mobile-nav-bar';
 import SideBar from '@/components/layout/side-bar';
@@ -27,7 +26,7 @@ export default async function layout({ children }: PropsWithChildren) {
                     <MobileNavBar />
                     <ProfileUpdateSheet />
                 </AuthContextProvider>
-                <CourseProgressCard />
+                {/* <CourseProgressCard /> */}
             </div>
         </>
     )

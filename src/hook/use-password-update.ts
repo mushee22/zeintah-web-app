@@ -1,9 +1,9 @@
+import React from 'react';
 import { queryClient } from '@/lib/client';
 import { PasswordUpdateSchema } from '@/lib/definition';
 import { getAuthAccessToken, getURL } from '@/lib/fetch';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 import { USER_PASSWORD_UPADTE_URL, USER_PROFILE_UPADTE_URL_METHOD } from '../constants/urls';
 
 export default function usePasswordUpdateMutation() {

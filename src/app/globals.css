@@ -6,6 +6,7 @@
   --primary: #F0BB67;
   --primary-100: #F0B267;
   --primary-200: #826436;
+  --primary-300: #162739;
   --secondary: #563F22;
   --secondary-500: #1D160E;
   --secondary-100: #1D1D20;
@@ -20,6 +21,7 @@
   --color-primary: var(--primary);
   --color-primary-100: var(--primary-100);
   --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
   --color-secondary: var(--secondary);
   --color-secondary-500: var(--secondary-500);
   --color-secondary-100: var(--secondary-100);
@@ -40,4 +42,18 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.post-card-bg {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+              linear-gradient(102.03deg, rgba(242, 237, 77, 0.1) -23.21%, rgba(159, 212, 177, 0.1) 37.78%, rgba(15, 48, 76, 0.1) 100%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
 }

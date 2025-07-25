@@ -8,7 +8,6 @@ export default function useLearningProgress() {
     const { mutate } = useMutation({
         mutationKey: ['updateCourseProgress'],
         mutationFn: async ({ videoId, progress, isCompleted }: { videoId?: number, progress: number, isCompleted?: boolean }) => {
-            console.log('videoId', videoId)
             if (!videoId) return
             const res = await fetcher(UPDATE_VIDEO_PROGRESS_URL, {
                 method: 'POST',

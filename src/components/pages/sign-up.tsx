@@ -2,7 +2,6 @@
 import DotsPattern from "@/assets/images/dots.png"
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import Container from '../elements/container'
 
 import useSignUp from '@/hook/use-sign-up'

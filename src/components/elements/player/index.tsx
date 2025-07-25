@@ -105,7 +105,6 @@ const Player: React.FC<Props> = (props) => {
 
     const handleBuffering = () => {
         dispatch({ type: "BUFFERING" })
-        console.log(isVideoEnded)
     }
 
 

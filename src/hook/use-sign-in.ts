@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { LOGIN_URL, LOGIN_URL_METHOD } from '@/constants/urls';
 import { SigInFormSchema } from '@/lib/definition';
 import { FecthError, fetcher } from '@/lib/fetch';
@@ -44,7 +42,7 @@ export default function useSignIn() {
                 });
 
 
-                await createSession(`${name}`, access);
+                await createSession(`${email}`, access);
 
                 router.replace('/')
 

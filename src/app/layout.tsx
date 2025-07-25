@@ -2,6 +2,7 @@
 import QueryClientContextProvider from "@/context/query-client";
 import { Metadata } from "next";
 import localFont from 'next/font/local';
+import { ToastProvider } from "@/components/ui/toast-provider";
 import "./globals.css";
 
 const myFont = localFont({
@@ -42,7 +43,9 @@ export default function RootLayout({
       >
         {/* <SideBar/> */}
         <QueryClientContextProvider>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </QueryClientContextProvider>
       </body>
     </html>

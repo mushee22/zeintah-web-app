@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 
 export async function getChapterById({ queryKey }: { queryKey: readonly unknown[] }) {
     const id = queryKey[1]
-    console.log(id)
     const res = await fetcher(GET_CHAPTER_DETAILS_URL.replace(":id", `${id}`), {
         method: 'GET',
     })

@@ -4,7 +4,6 @@ import { createSession } from '@/lib/session';
 import { getFirstNameAndLastName } from '@/lib/utils';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 import { LOGIN_URL, LOGIN_URL_METHOD, REGISTRATION_URL, REGISTRATION_URL_METHOD } from '../constants/urls';
 
 export default function useSignUp() {

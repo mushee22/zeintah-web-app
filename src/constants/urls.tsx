@@ -9,10 +9,10 @@ export const GET_CHPATERS_LIST_URL = "chapters/";
 export const GET_CHAPTER_DETAILS_URL = "chapters/:id/subchapters/";
 export const GET_SUBCHAPTER_DETAILS_URL = "subchapters/:id/";
 export const UPDATE_VIDEO_PROGRESS_URL = "subchapter/progress/update/";
+export const GET_IDEAS_URL = 'ideas'
 
 
 export const LOGIN_URL_METHOD = "POST";
 export const USER_PROFILE_UPADTE_URL_METHOD = "PUT";
-export const USER_URL_METHOD = "GET";
 export const USER_PROFILE_IMAGE_UPADATE_METHOD = "PUT"
 export const REGISTRATION_URL_METHOD = "POST"
