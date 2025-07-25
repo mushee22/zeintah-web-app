@@ -12,7 +12,7 @@ export default function PostHeader({ student, action }: PostHeaderProps) {
 
   return (
     <div className="flex items-center gap-x-3 p-4">
-      <div className="aspect-square w-10 bg-gray-100 rounded-full relative">
+      <div className="aspect-square w-10 bg-gray-100 flex items-center justify-center rounded-full overflow-hidden relative">
         {user?.email ? (
           profile_image ? (
             <Image
@@ -22,7 +22,7 @@ export default function PostHeader({ student, action }: PostHeaderProps) {
               className="object-cover"
             />
           ) : (
-            <span>{initials}</span>
+            <span className="text-sm font-bold text-blue-500">{initials}</span>
           )
         ) : (
           <Image src={Logo} alt="Logo" fill className="object-cover" />

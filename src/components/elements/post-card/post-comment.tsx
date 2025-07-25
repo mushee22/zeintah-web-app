@@ -18,7 +18,7 @@ export default function PostComment({
   return (
     <div className="gap-x-2">
       <div className="flex items-center gap-x-2 pb-1">
-        <div className="aspect-square w-6 bg-gray-100 rounded-full relative">
+        <div className="aspect-square w-6 bg-gray-100 overflow-hidden flex items-center justify-center rounded-full relative">
           {user.profile_image ? (
             <Image
               src={getImageURL(user.profile_image)}
@@ -27,7 +27,7 @@ export default function PostComment({
               className="object-cover"
             />
           ) : (
-            <span>{initials}</span>
+            <span className="text-sm font-bold text-blue-500">{initials}</span>
           )}
         </div>
         <div>
