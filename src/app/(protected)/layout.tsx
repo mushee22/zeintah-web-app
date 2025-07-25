@@ -7,8 +7,6 @@ import { getSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
-
-
 export default async function layout({ children }: PropsWithChildren) {
 
     const { isAuthenticated } = await getSession();
@@ -26,7 +24,6 @@ export default async function layout({ children }: PropsWithChildren) {
                     <MobileNavBar />
                     <ProfileUpdateSheet />
                 </AuthContextProvider>
-                {/* <CourseProgressCard /> */}
             </div>
         </>
     )
