@@ -25,8 +25,8 @@ const myFont = localFont({
 
 
 export const metadata: Metadata = {
-  title: "Horus Financial Learning Academy",
-  description: "Horus Financial Academy is a premier financial learning academy dedicated to equipping you with the knowledge and skills to navigate the financial markets. From foundational concepts to advanced strategies, we teach you how to analyze price momentum, identify key market levels, and make informed trading decisions using technical tools and real-world insights.",
+  title: "Zientnah Financial Learning Academy",
+  description: "Zientnah Financial Academy is a premier financial learning academy committed to empowering individuals with comprehensive financial education. We provide expert guidance on market analysis, trading strategies, and investment principles to help you build a strong foundation for successful trading and investing. Our academy focuses on practical skills development through hands-on learning and real market scenarios.",
 };
 
 
