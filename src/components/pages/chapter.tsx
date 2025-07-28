@@ -11,7 +11,6 @@ export default function ChapterPageContent({ slug }: { slug: string }) {
         src={MobileBg}
         alt='Background image'
         className="md:hidden fixed inset-0 -z-10 top-0 object-cover  w-full"
-
       />
     </Container>
   )

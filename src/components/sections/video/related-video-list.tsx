@@ -21,9 +21,6 @@ export default function RelatedVideoSection({ slug, videoId }: { slug?: string, 
             <div className='flex flex-col gap-y-4 mt-4'>
                 {
                    subChapter?.map((subChapter) => (
-                        videoId == `${subChapter.id}` ?
-                        <React.Fragment key={subChapter.id}/>
-                        :
                         <Link className={cn('inline-block')} href={`/course/chapter/${slug}/video/${subChapter.id}`} key={subChapter.id}>
                             <VideoCard
                                 duration={subChapter.duration}
@@ -32,6 +29,7 @@ export default function RelatedVideoSection({ slug, videoId }: { slug?: string, 
                                 isCompleted={subChapter.is_completed}
                                 thumbnail={subChapter.thumbnail ?? ''}
                                 className={cn(videoId == `${subChapter.id}`? 'bg-gradient-to-r' : '')}
+                                
                             />
                         </Link>
                     ))

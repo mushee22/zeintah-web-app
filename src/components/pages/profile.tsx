@@ -30,7 +30,7 @@ export default function Profile({ userId }: { userId?: number }) {
   // const isAuthUser = user?.id === userId;
 
   return (
-    <Container className="space-y-4 md:flex max-w-5xl mx-auto">
+    <Container className="space-y-4 lg:flex max-w-6xl gap-x-2 mx-auto">
       <div className="max-md:sticky top-0 z-10">
         <div className="sticky top-0 bg-background z-10 py-5">
           {!isLoading ? (

@@ -1,6 +1,7 @@
 'use client'
 import { useAuthContext } from '@/context/auth-context';
 import { cn } from '@/lib/utils';
+import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { buttonVariants } from '../ui/button';
@@ -13,7 +14,7 @@ export default function TopBar() {
 
     const isHome = pathname == "/";
 
-    const { isAuthenticated, isAuthenticating } = useAuthContext();
+    const { isAuthenticated, isAuthenticating, onLogout } = useAuthContext();
 
     if (isAuthenticating || !isHome) {
         return <></>
@@ -32,7 +33,6 @@ export default function TopBar() {
                 {
                     isAuthenticated ?
                         <>
-                            {/* <Button onClick={onLogout}>Logout</Button> */}
                             <Link href="/course" className={cn(buttonVariants({
                                 size: "default",
                                 variant: "link",
@@ -45,6 +45,16 @@ export default function TopBar() {
                                 size: "default",
                                 variant: "link",
                             }))}>Profile</Link>
+                            <button 
+                                onClick={onLogout}
+                                className={cn(buttonVariants({
+                                    size: "default",
+                                    variant: "link",
+                                }), "flex items-center gap-x-1 text-red-500 hover:text-red-600")}
+                            >
+                                <LogOut size={16} />
+                                Logout
+                            </button>
                         </>
                         :
                         <></>

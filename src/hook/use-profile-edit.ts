@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { USER_PROFILE_UPADTE_URL, USER_PROFILE_UPADTE_URL_METHOD } from '../constants/urls';
 import { useAuthContext } from '../context/auth-context';
 
-export default function useProfileMutation() {
+export default function useProfileMutation(onSuccess?: () => void) {
 
     const [userState, setUserState] = React.useState({
         name: '',
@@ -100,8 +100,7 @@ export default function useProfileMutation() {
 
                 if (response.ok) {
                     queryClient.invalidateQueries({ queryKey: ['user'] });
-                    // router.replace('/profile');
-                    return
+                    return { success: true };
                 }
 
                 return {
@@ -116,6 +115,11 @@ export default function useProfileMutation() {
                 }
             }
         },
+        onSuccess: (data) => {
+            if (data?.success) {
+                onSuccess?.();
+            }
+        }
     })
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

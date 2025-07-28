@@ -7,7 +7,7 @@ import { PostHeaderProps } from "./types";
 import { getInitials } from "./utils";
 
 export default function PostHeader({ student, action }: PostHeaderProps) {
-  const { user, profile_image, id } = student;
+  const { user, profile_image, id } = student || {};
   const initials = getInitials(user?.first_name, user?.last_name);
 
   return (

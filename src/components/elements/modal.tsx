@@ -15,8 +15,8 @@ export default function Modal({ open, onOpenChange, children }: Props) {
 
   return isMobile ? (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetTitle></SheetTitle>
-      <SheetContent className="border-white/30 p-4 pt-6 " side="bottom">
+      <SheetTitle className="max-md:hidden"></SheetTitle>
+      <SheetContent className="border-white/5 p-4 pt-6 " side="bottom">
         <X
           className="absolute top-2 right-2"
           onClick={() => onOpenChange?.(false)}

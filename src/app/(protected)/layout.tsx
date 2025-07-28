@@ -1,7 +1,7 @@
 
 import ProfileUpdateSheet from '@/components/elements/profile-update-sheet';
 import MobileNavBar from '@/components/layout/mobile-nav-bar';
-import SideBar from '@/components/layout/side-bar';
+// import SideBar from '@/components/layout/side-bar';
 import AuthContextProvider from '@/context/auth-context';
 import { getSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
@@ -17,8 +17,8 @@ export default async function layout({ children }: PropsWithChildren) {
         <>
             <div className={'relative h-screen flex flex-col'}>
                 <AuthContextProvider>
-                    <SideBar />
-                    <main className="md:pl-[102px]  flex-1">
+                    {/* <SideBar /> */}
+                    <main className="md:pl-[230px]  flex-1">
                         {children}
                     </main>
                     <MobileNavBar />

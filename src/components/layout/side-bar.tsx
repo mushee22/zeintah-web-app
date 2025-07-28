@@ -11,17 +11,20 @@ export default function SideBar() {
   const { setOpen } = useAuthContext()
 
   return (
-    <nav className={cn('fixed hidden  z-20 pl-6  inset-y-0  md:flex flex-col  items-center justify-center')}
+    <nav className={cn('fixed hidden  z-20 pt-8 inset-y-0  md:flex flex-col  ')}
       style={{
         // background: "linear-gradient(90deg, rgba(0, 0, 0, 0.47) 0%, rgba(0, 0, 0, 0.46) 100%)",
         // backdropFilter: "blur(60px)"
       }}
     >
+      <div className="pl-4">
       <Image
         src={Logo}
         alt="Zeintah Logo"
-        className="absolute top-8"
+        className="size-9"
       />
+      </div>
+      <div className="mt-2">
       {
         menues.map((menu) => (
           <Menu
@@ -33,6 +36,7 @@ export default function SideBar() {
           />
         ))
       }
+      </div>
       <div onClick={() => { setOpen?.(true) }} className="md:hidden">
         <ProfileIcon isActive={false} />
       </div>

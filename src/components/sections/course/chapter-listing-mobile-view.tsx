@@ -12,7 +12,7 @@ interface Props {
 
 export default function ChapterListingMobileView({ fetching, chapters }: Props) {
     return (
-        <div className='lg:hidden'>
+        <div className=''>
             <Header />
             <h3 className='my-4'>Chapters</h3>
             <div className='space-y-4  md:grid grid-cols-2 gap-x-4 gap-y-4'>
