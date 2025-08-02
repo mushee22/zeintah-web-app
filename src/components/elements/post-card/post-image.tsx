@@ -38,13 +38,17 @@ export default function PostImage({
       </DialogTrigger>
       <DialogContent className="max-w-[90vw]  max-h-[90vh] p-0 bg-transparent border-none shadow-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 data-[state=closed]:slide-out-to-center-2 data-[state=open]:slide-in-from-center-2 duration-500 ease-out">
         <DialogTitle className="sr-only">{alt || "Image preview"}</DialogTitle>
-        <div className="relative w-full h-full flex items-center justify-center">
-          <div className="relative max-w-full max-h-full animate-in zoom-in-95 duration-500 ease-out delay-100">
+        <div className="relative  flex items-center justify-center">
+          <div
+            className="relative max-w-full max-h-full animate-in zoom-in-95 duration-500 ease-out delay-100"
+            style={{
+              aspectRatio: image_height ? image_width / image_height : 1,
+            }}
+          >
             <Image
               src={getImageURL(image)}
               alt={alt}
-              width={800}
-              height={600}
+              fill
               className="object-contain max-w-full max-h-[80vh] rounded-lg shadow-2xl transition-all duration-500 ease-out"
               priority
             />
