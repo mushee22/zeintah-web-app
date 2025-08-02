@@ -38,7 +38,7 @@ export default function Profile({ userId }: { userId?: number }) {
               name={
                 studentData?.user?.first_name +
                 " " +
-                (user?.user?.last_name ?? "")
+                (studentData?.user?.last_name ?? "")
               }
               role="Learner"
               bio={studentData?.student_bio ?? ""}

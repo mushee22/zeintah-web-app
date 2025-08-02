@@ -9,8 +9,13 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import EmptyPosts from "@/components/elements/empty-posts";
 import CreatePost from "@/components/elements/create-post";
+import { useAuthContext } from "@/context/auth-context";
 
 export default function IdeaList({ userId }: { userId?: number }) {
+
+
+  const { user } = useAuthContext()
+
   const fetchIdeas = async ({ pageParam }: { pageParam: unknown }) => {
     const res: Response<Idea[]> = await fetcher(
       GET_IDEAS_URL + `?page=${pageParam}${userId ? `&user_id=${userId}` : ""}`,
@@ -64,7 +69,7 @@ export default function IdeaList({ userId }: { userId?: number }) {
                 <PostCard
                   {...idea}
                   key={idea.id}
-                  canEdit={idea?.student?.id == userId}
+                  canEdit={idea?.student?.id == user?.id}
                 />
               ))}
             </React.Fragment>
