@@ -128,23 +128,23 @@ const ShareDropdown: React.FC<SocialShareProps> = ({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuTrigger asChild >{children}</DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-fit border-white/10 bg-black/50">
         {shareButtons.map(({ Component, icon: Icon, label, props }, index) => (
           <DropdownMenuItem
             key={index}
-            className="cursor-pointer"
+            className="cursor-pointer hover:bg-white/10"
           >
             <Component className="flex gap-x-2" key={index} {...props}>
               <Icon className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">
-                {label.split(" on ")[1] || label.split(" via ")[1] || "Email"}
+                {label}
               </span>
             </Component>
           </DropdownMenuItem>
         ))}
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer" onClick={copyToClipboard}>
+        <DropdownMenuSeparator className="bg-white/10"/>
+        <DropdownMenuItem className="cursor-pointer hover:bg-white/10" onClick={copyToClipboard}>
           <Copy className="w-4 h-4 mr-2" />
           {isCopied ? "Copied" : "Copy Link"}
         </DropdownMenuItem>

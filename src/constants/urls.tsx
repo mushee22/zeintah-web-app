@@ -10,6 +10,8 @@ export const GET_CHAPTER_DETAILS_URL = "chapters/:id/subchapters/";
 export const GET_SUBCHAPTER_DETAILS_URL = "subchapters/:id/";
 export const UPDATE_VIDEO_PROGRESS_URL = "subchapter/progress/update/";
 export const GET_IDEAS_URL = 'ideas'
+export const GET_COURSES_URL = 'packages/'
+
 
 
 export const LOGIN_URL_METHOD = "POST";

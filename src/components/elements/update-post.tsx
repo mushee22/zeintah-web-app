@@ -30,9 +30,9 @@ export default function UpdatePost({ open, onClose, initialValues }: UpdatePostP
   };
 
   return (
-    <Modal open={open} onOpenChange={onClose}>
-      <div className="p-6 max-h-[75vh] overflow-y-auto no-scrollbar">
-        <h2 className="text-xl font-semibold mb-4">Edit Post</h2>
+    <Modal className="p-0" open={open} onOpenChange={onClose}>
+      <div className="p-0 max-h-[75vh] overflow-y-auto no-scrollbar">
+        <h2 className="text-xl font-semibold mb-4 px-4 pt-4">Edit Post</h2>
         <CreateOrUpdatePostForm
           initialValues={initialValues}
           onSuccess={handleSuccess}

@@ -33,7 +33,7 @@ export default function VideoPlayerSection({ slug }: Props) {
       />
       <div className='space-y-3 mt-4 flex-1 lg:max-w-[60vw]'>
         <Player
-          url={data?.data?.video ?? ''}
+          url={data?.data?.video_url ?? data?.data?.video ?? ''}
           light={data?.data?.thumbnail ?? ''}
           videoId={data?.data?.id}
           watchedDuration={data?.data?.progress?.watched_duration}

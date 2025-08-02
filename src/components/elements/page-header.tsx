@@ -23,7 +23,7 @@ export default function PageHeader({ subTitle = '', pageTitle, endIcon, isBackBu
           subTitle &&
           <p className='text-xs sm:text-sm font-medium text-foreground/50'>{subTitle}</p>
         }
-        <h2 className='text-base sm:text-2xl font-bold'>{pageTitle}</h2>
+        <h2 className='text-base sm:text-2xl font-bold line-clamp-2'>{pageTitle}</h2>
       </div>
       {
         endIcon && endIcon

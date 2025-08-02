@@ -1,17 +1,27 @@
 import MobileBg from "@/assets/images/chapter-listing-mobile-bg.png"
+import Bg from "@/assets/images/desktop-learn-bg.png"
 import Image from 'next/image'
 import Container from '../elements/container'
-import VideoListingSection from '../sections/chapter/video-listing'
+import ChapterListingSection from '../sections/chapter/chapter-listing'
 
-export default function ChapterPageContent({ slug }: { slug: string }) {
-  return (
-    <Container className='h-full overflow-hidden'>
-      <VideoListingSection slug={slug} />
-      <Image
-        src={MobileBg}
-        alt='Background image'
-        className="md:hidden fixed inset-0 -z-10 top-0 object-cover  w-full"
-      />
-    </Container>
-  )
+export default function ChapterPageContent({courseID}: { courseID: string }) {
+    return (
+        <Container className='md:py-0 h-full overflow-hidden'>
+            <ChapterListingSection courseID={courseID} />
+            <Image
+                src={Bg}
+                alt='Background image'
+                className="max-lg:hidden fixed inset-0 -z-10"
+                style={{
+                    top: '100px'
+                }}
+            />
+            <Image
+                src={MobileBg}
+                alt='Background image'
+                className="md:hidden fixed inset-0 top-0 -z-10 object-cover  w-full"
+                
+            />
+        </Container>
+    )
 }

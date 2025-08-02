@@ -51,6 +51,8 @@ export type Chapter = {
   description: string;
   duration: number;
   order: number;
+  package: Course;
+  package_title?: string;
   subchapters: SubChapter[];
 };
 
@@ -71,6 +73,7 @@ export type SubChapter = {
   order: number;
   chapter: number;
   progress: Progress | null;
+  video_url: string;
 };
 
 export interface Student {
@@ -120,4 +123,16 @@ export type Comment = {
   modified_time: string;
   idea: Idea;
   comment: string;
+}
+
+export type Course = {
+  id: number;
+  title: string;
+  thumbnail: string;
+  price: number;
+  created_date: string;
+  created_time: string;
+  modified_date: string;
+  modified_time: string;
+  is_student_purchased: boolean;
 }

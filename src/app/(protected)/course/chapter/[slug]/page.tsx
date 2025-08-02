@@ -1,4 +1,4 @@
-import ChapterPageContent from '@/components/pages/chapter'
+import ChapterPageContent from '@/components/pages/sub-chapter'
 import { redirect } from 'next/navigation'
 
 export default async function Page({ params, }: { params: Promise<{ slug: string }> }) {

@@ -54,9 +54,9 @@ export default function CreatePost() {
           <Plus className="text-black" />
         </button>
       )}
-      <Modal open={open} onOpenChange={handleOnClose}>
-        <div className="max-h-[75vh] overflow-y-auto no-scrollbar">
-          <h2 className="text-xl font-semibold mb-4">Create Post</h2>
+      <Modal className="p-0" open={open} onOpenChange={handleOnClose}>
+        <div className="max-h-[75vh] overflow-y-auto no-scrollbar ">
+          <h2 className="text-xl font-semibold mb-4 px-4 pt-4">Create Post</h2>
           <CreatePostForm onSuccess={handleOnSuccess} />
         </div>
       </Modal>

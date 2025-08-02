@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import useCreatePost, { CreatePostFormData } from "@/hook/use-create-post";
 import useUpdatePost from "@/hook/use-update-post";
+import { cn } from "@/lib/utils";
 
 interface CreatePostFormProps {
   onSuccess?: VoidFunction;
@@ -175,9 +176,9 @@ const CreateOrUpdatePostForm: React.FC<CreatePostFormProps> = ({
   };
 
   return (
-    <div className={className}>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-4 max-w-4xl">
+    <div className={cn(className)}>
+      <form onSubmit={handleSubmit} className="relative">
+        <div className="space-y-4 max-w-4xl overflow-y-auto max-h-[530px] md:max-h-[520px] pb-[100px] px-4">
           <div className="flex flex-col gap-y-1">
             <label className="text-sm font-medium">Title</label>
             <input
@@ -195,7 +196,6 @@ const CreateOrUpdatePostForm: React.FC<CreatePostFormProps> = ({
               <span className="text-red-500 text-sm">{errors.title}</span>
             )}
           </div>
-
           <div className="flex flex-col gap-y-1">
             <label className="text-sm font-medium">Description</label>
             <textarea
@@ -213,15 +213,14 @@ const CreateOrUpdatePostForm: React.FC<CreatePostFormProps> = ({
               <span className="text-red-500 text-sm">{errors.description}</span>
             )}
           </div>
-
           <div className="flex flex-col gap-y-2">
             <label className="text-sm font-medium">Image</label>
             {imagePreview && (
-              <div className="relative inline-block aspect-square w-full">
+              <div className="relative inline-block aspect-square max-h-[320px] w-full">
                 <Image
                   src={imagePreview}
                   alt="Preview"
-                  className="max-w-full aspect-square object-cover rounded-lg border"
+                  className="max-w-full  aspect-square object-cover rounded-lg border"
                   fill
                 />
                 <button
@@ -237,7 +236,7 @@ const CreateOrUpdatePostForm: React.FC<CreatePostFormProps> = ({
             {!imagePreview && (
               <div
                 {...getRootProps()}
-                className={`p-8 border border-dashed rounded-3xl cursor-pointer transition-colors ${
+                className={`p-4 border border-dashed rounded-3xl cursor-pointer transition-colors ${
                   isDragActive
                     ? "border-blue-500 bg-blue-50"
                     : errors.image
@@ -248,9 +247,9 @@ const CreateOrUpdatePostForm: React.FC<CreatePostFormProps> = ({
                 <input {...getInputProps()} />
                 <div className="flex flex-col gap-y-3 items-center w-full">
                   {isDragActive ? (
-                    <ImageIcon className="text-blue-500" size={48} />
+                    <ImageIcon className="text-blue-500" size={24} />
                   ) : (
-                    <Upload className="text-gray-400" size={48} />
+                    <Upload className="text-gray-400" size={24} />
                   )}
                   <div className="text-center">
                     <p className="text-gray-600">
@@ -270,33 +269,31 @@ const CreateOrUpdatePostForm: React.FC<CreatePostFormProps> = ({
               <span className="text-red-500 text-sm">{errors.image}</span>
             )}
           </div>
-
           {status && <div className="text-red-500 text-sm">{status}</div>}
+        </div>
+        <div className="flex gap-x-2 p-4  rounded-es-2xl rounded-ee-2xl items-center bg-black inset-x-0 pt-4 absolute bottom-0">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="  px-6 py-2 rounded-md hover:bg-accent-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {isSubmitting
+              ? mode === "edit"
+                ? "Updating..."
+                : "Creating..."
+              : mode === "edit"
+              ? "Update Post"
+              : "Create Post"}
+          </Button>
 
-          <div className="flex gap-x-2 items-center pt-4">
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="  px-6 py-2 rounded-md hover:bg-accent-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              {isSubmitting
-                ? mode === "edit"
-                  ? "Updating..."
-                  : "Creating..."
-                : mode === "edit"
-                ? "Update Post"
-                : "Create Post"}
-            </Button>
-
-            <Button
-              type="button"
-              onClick={handleReset}
-              disabled={isSubmitting}
-              className=" bg-red-400 text-white hover:text-gray-800 hover:bg-red-500  px-4 py-2"
-            >
-              Reset
-            </Button>
-          </div>
+          <Button
+            type="button"
+            onClick={handleReset}
+            disabled={isSubmitting}
+            className=" bg-red-400 text-white hover:text-gray-800 hover:bg-red-500  px-4 py-2"
+          >
+            Reset
+          </Button>
         </div>
       </form>
     </div>

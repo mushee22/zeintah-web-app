@@ -25,8 +25,10 @@ const myFont = localFont({
 
 
 export const metadata: Metadata = {
-  title: "Zientnah Financial Learning Academy",
-  description: "Zientnah Financial Academy is a premier financial learning academy committed to empowering individuals with comprehensive financial education. We provide expert guidance on market analysis, trading strategies, and investment principles to help you build a strong foundation for successful trading and investing. Our academy focuses on practical skills development through hands-on learning and real market scenarios.",
+  title: "Quantity Surveying – Zeitnah Group Of Institutions",
+  description: `
+  Zeitnah institute of quantity survey (ZIQS) is a premier organization established with an intention to mentor professionals with expertise in Quantity surveying Zeitnah’s team of experienced engineers mentors fresh graduates or diploma holders to skilled professionals in Quantity survey engineering through hands-on experience in GCC projects within a short period of time. This improves their value in construction industry and chances of getting hired in international job market. Diploma holders and graduates with civil engineering background can avail the benefits of ZIQS training.
+  `,
 };
 
 
@@ -41,7 +43,6 @@ export default function RootLayout({
       <body
         className={`${myFont.className} antialiased`}
       >
-        {/* <SideBar/> */}
         <QueryClientContextProvider>
           <ToastProvider>
             {children}

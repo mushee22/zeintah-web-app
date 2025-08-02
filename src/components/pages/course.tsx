@@ -2,12 +2,14 @@ import MobileBg from "@/assets/images/chapter-listing-mobile-bg.png"
 import Bg from "@/assets/images/desktop-learn-bg.png"
 import Image from 'next/image'
 import Container from '../elements/container'
-import ChapterListingSection from '../sections/course/chapter-listing'
+import CourseListingSection from "../sections/course/course-listing"
+import Header from "../sections/course/header"
 
-export default function Course() {
+export default function CoursePageContent() {
     return (
-        <Container className='md:py-0 h-full overflow-hidden'>
-            <ChapterListingSection />
+        <Container className="h-full space-y-5 !pt-0 overflow-hidden max-w-6xl">
+            <Header />
+            <CourseListingSection />
             <Image
                 src={Bg}
                 alt='Background image'

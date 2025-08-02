@@ -5,7 +5,11 @@ import { PropsWithChildren } from 'react'
 
 export default function QueryClientContextProvider({ children }: PropsWithChildren) {
     return (
-        <QueryClientProvider client={queryClient} >
+        <QueryClientProvider 
+         client={queryClient} 
+         
+        
+        >
             {children}
         </QueryClientProvider>
     )

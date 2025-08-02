@@ -5,7 +5,7 @@ import VideoCard from "@/components/elements/video-card";
 import useGetChapterById from "@/hook/use-get-chapter-by-id";
 import { secondsToMinutes } from "@/lib/utils";
 import Link from "next/link";
-import { LearContentListSkeletonView } from "../course/chapter-listing";
+import { LearContentListSkeletonView } from "../chapter/chapter-listing";
 
 export default function VideoListingSection({ slug }: { slug?: string }) {
   const {

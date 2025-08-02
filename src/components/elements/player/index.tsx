@@ -132,7 +132,7 @@ const Player: React.FC<Props> = (props) => {
                         // )),
                         attributes: {
                             controlsList: 'nodownload',
-                            crossOrigin: 'anonymous'
+                            // crossOrigin: 'credentials'
                         },
                     }
                 }}
