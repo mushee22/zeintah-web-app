@@ -135,4 +135,7 @@ export type Course = {
   modified_date: string;
   modified_time: string;
   is_student_purchased: boolean;
+  subchapter_count: number;
+  subchapter_duration: number;
+  total_completed_subchapters: number;
 }

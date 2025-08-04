@@ -19,6 +19,13 @@ export function secondsToMinutes(seconds: number) {
   return { minutes, remainingSeconds, durationText };
 }
 
+export function secondsToHoursAndMinutes(seconds: number) {
+  const hours = Math.floor(seconds / 3600);
+  const remainingMinutes = Math.floor((seconds % 3600) / 60);
+  const durationText = `${hours}h ${remainingMinutes}m`;
+  return { hours, remainingMinutes, durationText };
+}
+
 export function timeAgo(date: string) {
   const now = new Date();
   const inpuDate = new Date(date);
