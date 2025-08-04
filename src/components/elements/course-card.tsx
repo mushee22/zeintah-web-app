@@ -16,8 +16,8 @@ export default function CourseCard({
   title,
   image,
   isLocked,
-  totalDuration = "8h 45m",
-  videoCount = 24,
+  totalDuration = "0h 0m",
+  videoCount = 0,
   completedVideos = 0,
 }: Props) {
   // Calculate progress percentage

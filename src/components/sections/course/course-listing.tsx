@@ -35,8 +35,11 @@ export default function CourseListingSection() {
                 title={course.title}
                 isLocked={!course?.is_student_purchased}
                 totalDuration={
+                  course.subchapter_duration ?
                   secondsToHoursAndMinutes(course.subchapter_duration)
                     .durationText
+                  :
+                  ""
                 }
                 videoCount={course.subchapter_count}
                 completedVideos={course.total_completed_subchapters || 0}
