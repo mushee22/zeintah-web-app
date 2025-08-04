@@ -39,7 +39,7 @@ export default function CourseListingSection() {
                   secondsToHoursAndMinutes(course.subchapter_duration)
                     .durationText
                   :
-                  ""
+                  "-:--"
                 }
                 videoCount={course.subchapter_count}
                 completedVideos={course.total_completed_subchapters || 0}
