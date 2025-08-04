@@ -5,24 +5,19 @@ import {
   ProfileIcon,
 } from "@/components/elements/icons";
 
-import Modal from "@/components/elements/modal";
-import { Button } from "@/components/ui/button";
+
 import { useAuthContext } from "@/context/auth-context";
 import { nunito } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { LogOut } from "lucide-react";
+// import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
+import ProfileDropdown from "../elements/profile-dropdown";
 
 export default function MobileNavBar() {
-  const { setOpen, onLogout } = useAuthContext();
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
-
-  const handleLogout = () => {
-    setShowLogoutModal(false);
-    onLogout?.();
-  };
+  const { setOpen } = useAuthContext();
+  
 
   return (
     <div
@@ -54,7 +49,7 @@ export default function MobileNavBar() {
         />
         {/* Desktop Logout Button */}
         <div className="hidden md:block mt-auto mb-4">
-          <button
+          {/* <button
             onClick={() => setShowLogoutModal(true)}
             className={cn(
               nunito.className,
@@ -63,34 +58,11 @@ export default function MobileNavBar() {
           >
             <LogOut size={20} className="text-white" />
             <span className="text-sm text-white">Logout</span>
-          </button>
+          </button> */}
+          <ProfileDropdown />
         </div>
       </>
-      <Modal
-        open={showLogoutModal}
-        onOpenChange={setShowLogoutModal}
-      >
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Confirm Logout</h3>
-          <p className="text-sm text-muted-foreground">
-            Are you sure you want to log out?
-          </p>
-          <div className="flex gap-2 justify-end">
-            <Button
-              variant="secondary"
-              onClick={() => setShowLogoutModal(false)}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
-          </div>
-        </div>
-      </Modal>
+     
     </div>
   );
 }

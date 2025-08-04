@@ -19,7 +19,7 @@ export default function ProfileEditForm({
   onCancel?: () => void;
   onSuccess?: () => void;
 }) {
-  const { user, onLogout } = useAuthContext();
+  const { user, onLogout, setOpen } = useAuthContext();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const { mutate, isPending, data, userState, handleChange } =
@@ -78,6 +78,14 @@ export default function ProfileEditForm({
                 {user?.user.email}
               </p>
             )}
+             {!isEditing && (
+                <Button
+                  onClick={() => setOpen?.(false)}
+                  className="p-0 text-sm text-white font-light bg-gradient-to-r px-2 from-foreground/10 to-foreground/5 backdrop-blur-2xl"
+                >
+                  View Posts
+                </Button>
+              )}
           </div>
           {isEditing ? (
             <></>

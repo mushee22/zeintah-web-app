@@ -53,7 +53,7 @@ export default function ProfileUpdateSheet() {
             {
                 isMobile ?
                     <Sheet open={open} onOpenChange={handleOnClose}>
-                        <SheetContent title="" side="bottom" className={cn(isEditing ? 'h-[430px]' : 'h-[220px]', "p-5 border-0 transition-all duration-300 md:hidden")}>
+                        <SheetContent title="" side="bottom" className={cn(isEditing ? 'h-[430px]' : 'h-[220px]', "p-5 border-0 transition-all duration-300 md:hidden gap-y-0")}>
                             <SheetTitle className={cn(isEditing ? '' : 'sr-only')}>
                                 Edit Update
                             </SheetTitle>

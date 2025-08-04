@@ -60,7 +60,7 @@ export default function ProfileUpdate({
   return (
     <label
       htmlFor=""
-      className="relative aspect-[92/86] flex flex-col group w-[92px] md:w-[50px]"
+      className="relative aspect-[92/86] flex flex-col group w-[92px] "
     >
       {image && <ProfileAvatar imageUrl={image} alt={name ?? ""} />}
       <div className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-[#00000040] rounded-xl">

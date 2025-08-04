@@ -9,7 +9,7 @@ export default function ProfileAvatar({
   alt: string;
 }) {
   return (
-    <div className="aspect-[92/86] flex-1 bg-[#D9D9D9] rounded-xl overflow-hidden relative">
+    <div className=" flex-1 bg-[#D9D9D9] rounded-xl overflow-hidden relative">
       <Image
         src={imageUrl}
         alt={alt ?? "profile"}

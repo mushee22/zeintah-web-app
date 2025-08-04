@@ -31,10 +31,10 @@ export default function PostComment({
           )}
         </div>
         <div>
-          <p className="flex-1 text-sm font-bold">
+          <p className="flex-1 text-xs font-bold">
             {user.user?.first_name} {user.user?.last_name}
           </p>
-          <p className="text-xs opacity-60">Learner</p>
+          {/* <p className="text-xs opacity-60">Learner</p> */}
         </div>
       </div>
       <div className="flex items-center gap-x-2">
