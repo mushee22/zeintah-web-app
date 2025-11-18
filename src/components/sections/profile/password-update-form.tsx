@@ -1,6 +1,7 @@
 
 
 
+import PasswordInput from '@/components/elements/password-input';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import usePasswordUpdateMutation from '@/hook/use-password-update';
@@ -26,8 +27,7 @@ export default function ProfileEditForm() {
                 }
                 <div className='flex flex-col gap-y-1'>
                     <label className='text-sm font-medium'>Old Password</label>
-                    <Input
-                        type="password"
+                    <PasswordInput
                         placeholder="Old Password"
                         className=""
                         name='old_password'

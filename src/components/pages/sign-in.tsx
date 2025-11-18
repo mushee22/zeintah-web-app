@@ -12,6 +12,7 @@ import Logo from "@/assets/images/logo.svg";
 import BgPattern from "@/assets/images/dt-bg.png";
 
 import useSignIn from "@/hook/use-sign-in";
+import PasswordInput from "../elements/password-input";
 
 export default function SignInPageContent() {
   const { data, isPending, mutate } = useSignIn();
@@ -66,8 +67,7 @@ export default function SignInPageContent() {
             </div>
             <div className="flex flex-col gap-y-1">
               <label>Password</label>
-              <Input
-                type="password"
+              <PasswordInput
                 placeholder="Password"
                 className=""
                 name="password"
