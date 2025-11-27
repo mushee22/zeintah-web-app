@@ -17,7 +17,7 @@ export default function PasswordInput(props: Props) {
         {...props}
       />
       {
-        showPassword ? (
+        !showPassword ? (
           <EyeOffIcon
             onClick={() => setShowPassword(!showPassword)}
             className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#EEE852]"
