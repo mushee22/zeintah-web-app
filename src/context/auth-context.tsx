@@ -43,11 +43,6 @@ export default function AuthContextProvider({ children }: PropsWithChildren) {
 
     const [open, setOpen] = React.useState(false);
 
-
-    
-
-
-
     const { isLoading, data: sessionData } = useQuery({
         queryKey: ['session'],
         queryFn: async () => {

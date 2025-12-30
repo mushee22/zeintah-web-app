@@ -11,13 +11,14 @@ import { nunito } from "@/lib/font";
 import { cn } from "@/lib/utils";
 // import { LogOut } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ReactElement } from "react";
 import ProfileDropdown from "../elements/profile-dropdown";
 
 export default function MobileNavBar() {
-  const { setOpen } = useAuthContext();
-  
+  const { setOpen, isAuthenticated } = useAuthContext();
+  const router = useRouter();
+
 
   return (
     <div
@@ -40,13 +41,25 @@ export default function MobileNavBar() {
             path={menu.path}
           />
         ))}
-        <UserProfileUpdate
-          title="Profile"
-          isActive={false}
-          onClick={() => {
-            setOpen?.(true);
-          }}
-        />
+        {
+          isAuthenticated ? (
+            <UserProfileUpdate
+              title="Profile"
+              isActive={false}
+              onClick={() => {
+                setOpen?.(true);
+              }}
+            />
+          )
+            :
+            <UserProfileUpdate
+              title="Login"
+              isActive={false}
+              onClick={() => {
+                router.push("/sign-in");
+              }}
+            />
+        }
         {/* Desktop Logout Button */}
         <div className="hidden md:block mt-auto mb-4">
           {/* <button
@@ -62,7 +75,7 @@ export default function MobileNavBar() {
           <ProfileDropdown />
         </div>
       </>
-     
+
     </div>
   );
 }
@@ -84,8 +97,8 @@ export const Menu = ({
     pathname === "/" && path == "/"
       ? true
       : pathname.includes(asPath)
-      ? true
-      : false;
+        ? true
+        : false;
 
   return (
     <Link

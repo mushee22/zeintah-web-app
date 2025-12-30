@@ -13,9 +13,13 @@ import BgPattern from "@/assets/images/dt-bg.png";
 
 import useSignIn from "@/hook/use-sign-in";
 import PasswordInput from "../elements/password-input";
+import { useRouter } from "next/navigation";
+
 
 export default function SignInPageContent() {
   const { data, isPending, mutate } = useSignIn();
+
+  const router = useRouter();
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,17 +28,17 @@ export default function SignInPageContent() {
 
   return (
     <Container className="mx-auto mt-10">
-      {/* <Pattern /> */}
       <Image
         src={BgPattern}
         alt="Zeintah bg pattern"
         fill
         className="absolute top-0 left-0 z-[-1] object-cover"
         sizes="100vw"
+
       />
       <div className="max-w-xl mx-auto  rounded-md h-[80vh] flex flex-col justify-center  space-y-6">
         <div className="relative ">
-          <Image src={Logo} alt="Horus Logo" className="mx-auto mb-4" width={200} height={200} />
+          <Image src={Logo} alt="Horus Logo" onClick={() => router.push("/")} className="mx-auto mb-4 cursor-pointer" width={200} height={200} />
         </div>
         <div
           className="p-4 md:p-8"
@@ -77,17 +81,14 @@ export default function SignInPageContent() {
                   {data?.errors?.password[0]}
                 </p>
               )}
-              {/* <div className='text-right'>
-                                <Link href="/forgot-password" className='text-primary text-sm font-medium'>Forgot Password?</Link>
-                            </div> */}
             </div>
             <Button type="submit" className="rounded-xl" disabled={isPending}>
               Sign In
             </Button>
+            <Button type="button" variant={"link"} className="rounded-xl text-foreground" disabled={isPending} onClick={() => router.back()}>
+              Go Back
+            </Button>
           </form>
-          {/* <div className="flex flex-col items-center justify-center mt-6">
-                        <p> {"Don't"} You Have <Link replace href="/sign-up" className='text-primary'>Sign Up</Link> </p>
-                    </div> */}
         </div>
       </div>
     </Container>

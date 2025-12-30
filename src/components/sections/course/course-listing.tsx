@@ -1,6 +1,7 @@
 "use client";
 import CourseCard, { CourseSkeleton } from "@/components/elements/course-card";
 import { GET_COURSES_URL } from "@/constants/urls";
+import { useAuthContext } from "@/context/auth-context";
 import { fetcher, getImageURL } from "@/lib/fetch";
 import { secondsToHoursAndMinutes } from "@/lib/utils";
 import { Course, Response } from "@/type";
@@ -9,6 +10,9 @@ import Link from "next/link";
 import React from "react";
 
 export default function CourseListingSection() {
+
+  const { isAuthenticated } = useAuthContext()
+
   const { data, isLoading } = useQuery<Response<Course[]>>({
     queryKey: ["chapters"],
     queryFn: async () => {
@@ -34,12 +38,13 @@ export default function CourseListingSection() {
                 image={getImageURL(course.thumbnail)}
                 title={course.title}
                 isLocked={!course?.is_student_purchased}
+                isNeedToLogin={false}
                 totalDuration={
                   course.subchapter_duration ?
-                  secondsToHoursAndMinutes(course.subchapter_duration)
-                    .durationText
-                  :
-                  "-:--"
+                    secondsToHoursAndMinutes(course.subchapter_duration)
+                      .durationText
+                    :
+                    "-:--"
                 }
                 videoCount={course.subchapter_count}
                 completedVideos={course.total_completed_subchapters || 0}
@@ -50,6 +55,7 @@ export default function CourseListingSection() {
               image={getImageURL(course.thumbnail)}
               title={course.title}
               isLocked={!course?.is_student_purchased}
+              isNeedToLogin={!isAuthenticated}
               totalDuration={
                 secondsToHoursAndMinutes(course.subchapter_duration)
                   .durationText

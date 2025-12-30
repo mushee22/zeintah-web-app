@@ -2,10 +2,12 @@ import React from "react";
 
 import Image, { StaticImageData } from "next/image";
 import { LockIcon, PlayIcon, ClockIcon, Check } from "lucide-react"
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: string;
   isLocked: boolean;
+  isNeedToLogin: boolean;
   image: StaticImageData | string;
   totalDuration?: string;
   videoCount?: number;
@@ -16,6 +18,7 @@ export default function CourseCard({
   title,
   image,
   isLocked,
+  isNeedToLogin,
   totalDuration = "0h 0m",
   videoCount = 0,
   completedVideos = 0,
@@ -25,6 +28,13 @@ export default function CourseCard({
     if (!completedVideos || !videoCount) return 0;
     return Math.min((completedVideos / videoCount) * 100, 100);
   };
+
+  const router = useRouter();
+
+  const handleLogin = () => {
+    if (!isNeedToLogin) return;
+    router.push('/sign-in');
+  }
 
   const progress = calculateProgress();
   const isFullyCompleted = completedVideos === videoCount;
@@ -51,7 +61,7 @@ export default function CourseCard({
           isFullyCompleted ? (
             <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-green-500 rounded-full text-white">
               <div className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-medium flex gap-x-1 items-center">
-                <Check size={14} strokeWidth={2.5}/>
+                <Check size={14} strokeWidth={2.5} />
                 Completed
               </div>
             </div>
@@ -88,7 +98,7 @@ export default function CourseCard({
         </div>
       </div>
       {isLocked && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <div onClick={handleLogin} className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
           <div className="bg-gradient-to-r from-accent-primary to-accent-secondary p-3 sm:p-4 rounded-full shadow-xl">
             <LockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-background" />
           </div>
@@ -100,7 +110,7 @@ export default function CourseCard({
 }
 
 
-export function CourseSkeleton(){
+export function CourseSkeleton() {
   return (
     <div className="group relative rounded-xl sm:rounded-2xl overflow-hidden  border border-white/10">
       <div className="relative h-[160px] sm:h-[180px] overflow-hidden">
