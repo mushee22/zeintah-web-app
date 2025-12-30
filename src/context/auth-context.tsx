@@ -77,7 +77,7 @@ export default function AuthContextProvider({ children }: PropsWithChildren) {
             token: null,
             isAuthenticating: false,
         });
-        router.replace('/sign-in')
+        router.replace('/')
     }
 
     useEffect(() => {
