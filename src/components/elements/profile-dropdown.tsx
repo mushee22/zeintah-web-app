@@ -22,7 +22,6 @@ export default function ProfileDropdown() {
 
   const handleLogout = () => {
     onLogout?.();
-    setShowLogoutModal(false);
   };
 
   if (!user) return null;

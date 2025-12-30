@@ -77,6 +77,7 @@ export default function AuthContextProvider({ children }: PropsWithChildren) {
             token: null,
             isAuthenticating: false,
         });
+        setOpen(false);
         router.replace('/')
     }
 
