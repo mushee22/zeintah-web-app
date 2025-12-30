@@ -20,7 +20,12 @@ export default function ProfileDropdown() {
 
   const [open, setOpen] = useState(false);
 
-  if(!user) return null;
+  const handleLogout = () => {
+    onLogout?.();
+    setShowLogoutModal(false);
+  };
+
+  if (!user) return null;
 
   return (
     <div>
@@ -28,7 +33,7 @@ export default function ProfileDropdown() {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            
+
             className="relative outline-0 border-0 h-auto py-2 focus-visible:ring-0 focus:ring-0 focus:outline-0 ring-0 rounded-none hover:bg-gradient-to-l hover:from-foreground/5 hover:to-foreground/10  gap-x-2 flex items-center "
           >
             <Avatar className="h-8 w-8">
@@ -75,7 +80,7 @@ export default function ProfileDropdown() {
       <LogoutConfirmationAlert
         showLogoutModal={showLogoutModal}
         setShowLogoutModal={setShowLogoutModal}
-        onLogout={onLogout}
+        onLogout={handleLogout}
       />
     </div>
   );
