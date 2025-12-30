@@ -22,6 +22,7 @@ export default function PostCard({
   is_liked,
   like_count,
   comment_count,
+  isAuthenticated,
 }: PostCardProps) {
   const { editOpen, deleteConfirm, setEditOpen, setDeleteConfirm } =
     usePostAction();
@@ -50,16 +51,19 @@ export default function PostCard({
         description={description}
         title={title}
       />
-      <PostFooter
-        student={student}
-        postId={id ?? 0}
-        title={title}
-        description={description}
-        isUserLiked={is_liked}
-        likeCount={like_count}
-        commentsCount={comment_count}
-      />
-      {canEdit && (
+      {
+        isAuthenticated && (
+          <PostFooter
+            student={student}
+            postId={id ?? 0}
+            title={title}
+            description={description}
+            isUserLiked={is_liked}
+            likeCount={like_count}
+            commentsCount={comment_count}
+          />
+        )}
+      {canEdit && isAuthenticated && (
         <>
           <UpdatePost
             initialValues={{

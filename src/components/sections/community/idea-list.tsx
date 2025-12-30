@@ -9,8 +9,11 @@ import React from "react";
 import { ideaSkeleton } from "../profile/idea-list";
 import EmptyPosts from "@/components/elements/empty-posts";
 import LoadMore from "@/components/elements/load-more";
+import { useAuthContext } from "@/context/auth-context";
 
-export default function IdeaList({ userId }:{ userId?: string }) {
+export default function IdeaList({ userId }: { userId?: string }) {
+
+  const { isAuthenticated } = useAuthContext();
 
   const fetchIdeas = async ({ pageParam }: { pageParam: unknown }) => {
     const res: Response<Idea[]> = await fetcher(
@@ -34,7 +37,7 @@ export default function IdeaList({ userId }:{ userId?: string }) {
     },
   });
 
-  
+
 
   // Check if there are any posts
   const hasPosts = data?.pages.some(group => group.data && group.data.length > 0);
@@ -50,7 +53,11 @@ export default function IdeaList({ userId }:{ userId?: string }) {
           {data?.pages.map((group, i) => (
             <React.Fragment key={i}>
               {group.data?.map((idea) => (
-                <PostCard {...idea} key={idea.id} />
+                <PostCard
+                  {...idea}
+                  key={idea.id}
+                  isAuthenticated={isAuthenticated}
+                />
               ))}
             </React.Fragment>
           ))}

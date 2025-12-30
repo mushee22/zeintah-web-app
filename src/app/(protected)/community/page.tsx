@@ -2,6 +2,7 @@ import MobileBg from "@/assets/images/chapter-listing-mobile-bg.png";
 import Bg from "@/assets/images/desktop-learn-bg.png";
 import CreatePost from "@/components/elements/create-post";
 import IdeaList from "@/components/sections/community/idea-list";
+import { getSession } from "@/lib/session";
 import Image from "next/image";
 
 
@@ -41,11 +42,18 @@ import Image from "next/image";
 //   }
 // );
 
-export default function Page() {
+export default async function Page() {
+
+  const { isAuthenticated } = await getSession();
+
+
+
   return (
     <div className="p-4 max-md:pb-[100px] md:p-12 lg:p-10 max-w-2xl mx-auto h-full overflow-hidden">
       <IdeaList />
-      <CreatePost />
+      {
+        isAuthenticated && <CreatePost />
+      }
       <Image
         src={Bg}
         alt="Background image"

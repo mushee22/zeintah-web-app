@@ -2,6 +2,7 @@ import { Idea, Student } from "@/type";
 
 export interface PostCardProps extends Idea {
   canEdit?: boolean;
+  isAuthenticated?: boolean;
 }
 
 export interface PostHeaderProps {
