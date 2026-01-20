@@ -7,7 +7,7 @@ interface FetcherOptions extends RequestInit {
 }
 
 export const getURL = (path: string) => {
-    const baseURL =  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/web/';
+    const baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/web/';
     return `${baseURL}${path}`;
 }
 
@@ -29,11 +29,15 @@ export const fetcher = async (path: string, options: FetcherOptions = {}) => {
 
     const apiPath = options?.isAbsolute ? path : getURL(path);
 
+    const token = await getAuthAccessToken();
+
     const res = await fetch(apiPath, {
         ...options,
         headers: {
             'Content-Type': 'application/json',
-            ...(options?.isGuest ? {} : { Authorization: `Bearer ${await getAuthAccessToken()}` }),
+            ...(options?.isGuest ? {} : token ? {
+                Authorization: `Bearer ${token}`
+            } : {}),
             ...options.headers,
         },
     });
