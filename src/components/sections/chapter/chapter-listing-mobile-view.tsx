@@ -10,17 +10,18 @@ interface Props {
     chapters: Chapter[];
 }
 
-export default function ChapterListingMobileView({ fetching, chapters }: Props) {
+export default function ChapterListingMobileView({ fetching, chapters = [] }: Props) {
     return (
         <div className=''>
-            <Header 
+            <Header
                 title={chapters[0]?.package_title ?? ""}
             />
             <h3 className='my-4'>Chapters</h3>
             <div className='space-y-4  md:grid grid-cols-2 gap-x-4 gap-y-4'>
                 {fetching && <LearContentListSkeletonView />}
+
                 {
-                    chapters?.map((chapter, index) => (
+                    Array.isArray(chapters) ? chapters?.map((chapter, index) => (
                         <Link className='block' key={index} href={`/course/chapter/${chapter?.id}`}>
                             <ChapterCard
                                 duration={chapter?.total_duration}
@@ -33,6 +34,8 @@ export default function ChapterListingMobileView({ fetching, chapters }: Props) 
                             />
                         </Link>
                     ))
+                        :
+                        null
                 }
             </div>
         </div>

@@ -87,14 +87,24 @@ export default function CourseCard({
           {title}
         </h3>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1 text-xs text-muted">
-            <ClockIcon className="w-3 h-3" />
-            <span className="text-xs">{totalDuration}</span>
-          </div>
-          <div className="flex items-center gap-1 text-xs text-muted">
-            {/* <VideoIcon className="w-3 h-3" /> */}
-            <span className="text-xs">{videoCount} videos</span>
-          </div>
+          {
+            totalDuration ?
+              <div className="flex items-center gap-1 text-xs text-muted">
+                <ClockIcon className="w-3 h-3" />
+                <span className="text-xs">{totalDuration}</span>
+              </div>
+              :
+              null
+          }
+          {
+            videoCount ?
+              <div className="flex items-center gap-1 text-xs text-muted">
+                {/* <VideoIcon className="w-3 h-3" /> */}
+                <span className="text-xs">{videoCount} videos</span>
+              </div>
+              :
+              null
+          }
         </div>
       </div>
       {isLocked && (

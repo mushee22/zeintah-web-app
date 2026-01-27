@@ -44,7 +44,7 @@ export default function CourseListingSection() {
                     secondsToHoursAndMinutes(course.subchapter_duration)
                       .durationText
                     :
-                    "-:--"
+                    ""
                 }
                 videoCount={course.subchapter_count}
                 completedVideos={course.total_completed_subchapters || 0}
@@ -57,8 +57,11 @@ export default function CourseListingSection() {
               isLocked={!course?.is_student_purchased}
               isNeedToLogin={!isAuthenticated}
               totalDuration={
-                secondsToHoursAndMinutes(course.subchapter_duration)
-                  .durationText
+                course.subchapter_duration ?
+                  secondsToHoursAndMinutes(course.subchapter_duration)
+                    .durationText
+                  :
+                  ""
               }
               videoCount={course.subchapter_count}
               key={course.id}
