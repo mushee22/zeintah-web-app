@@ -4,12 +4,14 @@ import Image from 'next/image'
 import Container from '../elements/container'
 import RelatedVideoSection from '../sections/video/related-video-list'
 import VideoPlayerSection from '../sections/video/video-player'
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 
 export default function VideoPageContent({ chapterId, videoId }: { chapterId?: string, videoId: string }) {
 
     useEffect(() => {
-        const disableContextMenu = (e: PointerEvent) => e.preventDefault();
+        const disableContextMenu = (e: MouseEvent) => {
+            e.preventDefault()
+        };
 
         const disableKeys = (e: KeyboardEvent) => {
             if (
