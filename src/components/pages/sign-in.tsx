@@ -23,7 +23,10 @@ export default function SignInPageContent() {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutate(event);
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    mutate({ email, password });
   };
 
   return (

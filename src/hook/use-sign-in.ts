@@ -4,6 +4,7 @@ import { FecthError, fetcher } from '@/lib/fetch';
 import { createSession } from '@/lib/session';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { z } from 'zod';
 
 export default function useSignIn() {
 
@@ -11,40 +12,33 @@ export default function useSignIn() {
 
     const { mutate, data, isPending, isError, } = useMutation({
         mutationKey: ['sign-in'],
-        mutationFn: async (event: React.FormEvent<HTMLFormElement>) => {
-            const formData = new FormData(event.target as HTMLFormElement);
-            const validateUserSignInData = SigInFormSchema.safeParse({
-                email: formData.get('email'),
-                password: formData.get('password'),
-            })
+        mutationFn: async (credentials: z.infer<typeof SigInFormSchema>) => {
+
+            const validateUserSignInData = SigInFormSchema.safeParse(credentials);
 
             if (!validateUserSignInData.success) {
-                const errors = validateUserSignInData.error.flatten()
+                const errors = validateUserSignInData.error.flatten();
                 return {
                     errors: {
                         email: errors.fieldErrors.email,
                         password: errors.fieldErrors.password,
                     },
-                }
+                };
             }
-
-            const email = formData.get('email');
-            const password = formData.get('password');
 
             try {
                 const { access } = await fetcher(LOGIN_URL, {
                     method: LOGIN_URL_METHOD,
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                    }),
+                    body: JSON.stringify(credentials),
                     isGuest: true,
                 });
 
 
-                await createSession(`${email}`, access);
+                await createSession(`${credentials.email}`, access);
 
                 router.replace('/')
+
+                return { success: true };
 
             } catch (error) {
                 if (error instanceof FecthError) {
@@ -53,13 +47,11 @@ export default function useSignIn() {
                             email: error.info?.email ?? '',
                             password: error.info?.password ?? '',
                         },
-                        message: error.info?.detail ?? "",
+                        message: error.info?.detail ?? "An error occurred during sign in.",
                     }
                 }
+                throw error;
             }
-
-            
-
         }
     })
 
